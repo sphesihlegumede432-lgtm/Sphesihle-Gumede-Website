@@ -128,7 +128,7 @@ footer{color:var(--muted);text-align:center;padding:2.5rem 0 1rem;font-size:.9re
   s.addEventListener("click", hide);
 })();
 
-var PRICE = 10;
+var PRICE = 15;
 var PRODUCTS = [
   {id:"toffee", name:"Toffee Chews", emoji:"🍬", desc:"Soft, buttery and slow to finish.", bg:"#ffd9a8"},
   {id:"lolly", name:"Rainbow Lollipop", emoji:"🍭", desc:"A big swirl that lasts the walk home.", bg:"#ffc2dd"},
@@ -195,7 +195,7 @@ document.getElementById("checkout").addEventListener("click", function(){
   var n = count(); if (!n) return;
   var lines = Object.keys(cart).map(function(k){ return cart[k] + " × " + find(k).name; }).join(", ");
   var note = document.getElementById("note");
-  note.textContent = "Order ready: " + lines + ". Total " + rand(n * PRICE) + ". Show this at the counter to pay and collect.";
+  note.textContent = "Order ready: " + lines + ". Total " + fifteen(n * PRICE) + ". Show this at the counter to pay and collect.";
   note.hidden = false;
   cart = {}; save(); renderCart();
 });
