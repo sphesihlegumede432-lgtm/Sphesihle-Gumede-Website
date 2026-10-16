@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Gumede Candy Store – every candy R10</title>
+<title>Gumede Candy Store – every candy R15</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
@@ -37,7 +37,7 @@ header.top{display:flex;justify-content:space-between;align-items:center;padding
 .tag{justify-self:center;width:min(100%,260px);aspect-ratio:1;border-radius:50%;background:var(--lemon);color:#2b1a4f;display:grid;place-content:center;text-align:center;transform:rotate(-8deg);border:6px dashed var(--pink)}
 .tag b{font:700 5.5rem/1 Fredoka,system-ui,sans-serif}
 .tag span{font-weight:700}
-.btn{display:inline-block;border:0;border-radius:999px;background:var(--pink);color:#fff;font:700 1rem Nunito,system-ui,sans-serif;padding:.8rem 1.4rem;cursor:pointer;text-decoration:none}
+.btn{display:inline-block;border:0;border-radius:999px;background:var(--purple);color:#fff;font:700 1rem Nunito,system-ui,sans-serif;padding:.8rem 1.4rem;cursor:pointer;text-decoration:none}
 .btn:hover{filter:brightness(1.08)}
 .btn:focus-visible,.qty button:focus-visible,.bar button:focus-visible{outline:3px solid var(--lime);outline-offset:2px}
 .btn.alt{background:var(--lime);color:#2b1a4f}
@@ -72,7 +72,7 @@ footer{color:var(--muted);text-align:center;padding:2.5rem 0 1rem;font-size:.9re
 .splash h2{font-size:clamp(3.2rem,16vw,6rem);line-height:1;color:var(--pink);margin:0;letter-spacing:.02em}
 .splash p{margin:0;font-size:1.15rem;max-width:30ch}
 .load{width:min(280px,70vw);height:14px;border:3px solid var(--ink);border-radius:999px;margin-top:1rem;overflow:hidden}
-.load i{display:block;height:100%;width:0;background:var(--pink);animation:fill 3.5s linear forwards}
+.load i{display:block;height:100%;width:0;background:var(--red);animation:fill 3.5s linear forwards}
 .splash small{opacity:.8;margin-top:.3rem}
 @keyframes hop{to{transform:translateY(-14px) rotate(12deg)}}
 @keyframes fill{to{width:100%}}
@@ -80,20 +80,20 @@ footer{color:var(--muted);text-align:center;padding:2.5rem 0 1rem;font-size:.9re
 </style>
 </head>
 <body>
-<div class="splash" id="splash" role="status" aria-label="Loading Sweet Ten">
+<div class="splash" id="splash" role="status" aria-label="Loading Sweet Fifteen">
   <div class="strip t"></div><div class="strip b"></div>
   <div class="candy" aria-hidden="true">🍬</div>
   <h2>Howzit!</h2>
-  <p>Welcome to Sweet Ten. Lekker sweets, every one R10.</p>
+  <p>Welcome to Sweet fifteen. Lekker sweets, every one R15.</p>
   <div class="load"><i></i></div>
-  <small>Tap anywhere to skip</small>
+  <small>Tap to skip</small>
 </div>
 <div class="wrap">
   <header class="top"><div class="brand">🍬 Gumede Candy Store</div><a class="btn alt" href="#shop">Shop</a></header>
   <section class="hero">
     <div>
       <h1>Every sweet is fifteen rand.</h1>
-      <p>Pick a handful, no maths needed. Each candy costs R10, always.</p>
+      <p>Pick a handful, no maths needed. Each candy costs R15, always.</p>
       <a class="btn" href="#shop">Pick your sweets</a>
     </div>
     <div class="tag" aria-hidden="true"><b>R15</b><span>each, always</span></div>
