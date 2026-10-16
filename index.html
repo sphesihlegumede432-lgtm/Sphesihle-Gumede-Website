@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sweet Ten – every candy R10</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#fff3f8; --surface:#ffffff; --ink:#2b1a4f; --muted:#6b5a8a;
+  --pink:#ff4f9a; --lime:#b6f03c; --lemon:#ffd93b; --line:#f0d4e3;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#1b1132; --surface:#271a47; --ink:#fdf2fa; --muted:#b9a9d9; --line:#3d2c66; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1b1132; --surface:#271a47; --ink:#fdf2fa; --muted:#b9a9d9; --line:#3d2c66; color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.5 Nunito,system-ui,sans-serif;padding-bottom:5.5rem}
+h1,h2,h3,.brand{font-family:Fredoka,"Trebuchet MS",system-ui,sans-serif;margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.25rem}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:1rem 0}
+.brand{font-weight:700;font-size:1.5rem;color:var(--pink)}
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:1.5rem;align-items:center;padding:1.5rem 0 2.5rem}
+.hero h1{font-size:clamp(2.6rem,8vw,5rem);line-height:1;font-weight:700}
+.hero p{color:var(--muted);max-width:34ch;margin:1rem 0 1.5rem;font-size:1.1rem}
+.tag{justify-self:center;width:min(100%,260px);aspect-ratio:1;border-radius:50%;background:var(--lemon);color:#2b1a4f;display:grid;place-content:center;text-align:center;transform:rotate(-8deg);border:6px dashed var(--pink)}
+.tag b{font:700 5.5rem/1 Fredoka,system-ui,sans-serif}
+.tag span{font-weight:700}
+.btn{display:inline-block;border:0;border-radius:999px;background:var(--pink);color:#fff;font:700 1rem Nunito,system-ui,sans-serif;padding:.8rem 1.4rem;cursor:pointer;text-decoration:none}
+.btn:hover{filter:brightness(1.08)}
+.btn:focus-visible,.qty button:focus-visible,.bar button:focus-visible{outline:3px solid var(--lime);outline-offset:2px}
+.btn.alt{background:var(--lime);color:#2b1a4f}
+h2{font-size:1.8rem;margin-bottom:1rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1rem}
+.card{background:var(--surface);border:2px solid var(--line);border-radius:20px;padding:1rem;display:flex;flex-direction:column;gap:.5rem}
+.pic{height:110px;border-radius:14px;display:grid;place-items:center;font-size:3.4rem}
+.card h3{font-size:1.2rem}
+.card p{margin:0;color:var(--muted);font-size:.92rem;flex:1}
+.row{display:flex;justify-content:space-between;align-items:center;gap:.5rem}
+.price{font:700 1.3rem Fredoka,system-ui,sans-serif}
+.card .btn{padding:.55rem 1rem}
+footer{color:var(--muted);text-align:center;padding:2.5rem 0 1rem;font-size:.9rem}
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:var(--bg);padding:.8rem 1.25rem calc(.8rem + env(safe-area-inset-bottom,0px));z-index:5}
+.bar .in{max-width:1040px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.bar button{background:var(--lime);color:#2b1a4f;border:0;border-radius:999px;font:700 1rem Nunito,system-ui,sans-serif;padding:.6rem 1.2rem;cursor:pointer}
+.panel{position:fixed;left:0;right:0;bottom:4.2rem;z-index:4;background:var(--surface);color:var(--ink);border-top:3px solid var(--pink);border-radius:20px 20px 0 0;max-height:65vh;overflow-y:auto;padding:1.25rem;box-shadow:0 -8px 30px rgba(0,0,0,.2)}
+.panel[hidden]{display:none}
+.panel .in{max-width:620px;margin:0 auto}
+.item{display:flex;justify-content:space-between;align-items:center;gap:.75rem;padding:.6rem 0;border-bottom:1px solid var(--line)}
+.qty{display:flex;align-items:center;gap:.5rem}
+.qty button{width:2rem;height:2rem;border-radius:50%;border:2px solid var(--pink);background:transparent;color:var(--ink);font-weight:700;cursor:pointer}
+.total{display:flex;justify-content:space-between;font:700 1.3rem Fredoka,system-ui,sans-serif;margin:1rem 0}
+.note{background:var(--lemon);color:#2b1a4f;border-radius:14px;padding:.9rem 1rem;margin-top:1rem}
+@media (max-width:640px){.hero{grid-template-columns:1fr}.tag{width:180px;order:-1}.tag b{font-size:4rem}}
+.splash{position:fixed;inset:0;z-index:50;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;text-align:center;padding:0 1.25rem;cursor:pointer;transition:opacity .5s;animation:splashOut .1s 4.2s forwards}
+.splash.done{opacity:0;pointer-events:none}
+@keyframes splashOut{to{visibility:hidden}}
+.strip{position:absolute;left:0;right:0;height:48px;border-block:5px solid var(--lime);background:conic-gradient(from -45deg at 50% 100%,#ffd93b 0 90deg,transparent 0) 0 0/48px 48px,conic-gradient(from 135deg at 50% 0,#ff4f9a 0 90deg,transparent 0) 0 0/48px 48px,#2b1a4f}
+.strip.t{top:0}.strip.b{bottom:0}
+.splash .candy{font-size:4rem;animation:hop .7s ease-in-out infinite alternate}
+.splash h2{font-size:clamp(3.2rem,16vw,6rem);line-height:1;color:var(--pink);margin:0;letter-spacing:.02em}
+.splash p{margin:0;font-size:1.15rem;max-width:30ch}
+.load{width:min(280px,70vw);height:14px;border:3px solid var(--ink);border-radius:999px;margin-top:1rem;overflow:hidden}
+.load i{display:block;height:100%;width:0;background:var(--pink);animation:fill 3.5s linear forwards}
+.splash small{opacity:.8;margin-top:.3rem}
+@keyframes hop{to{transform:translateY(-14px) rotate(12deg)}}
+@keyframes fill{to{width:100%}}
+@media (prefers-reduced-motion:reduce){.splash{transition:none}.splash .candy{animation:none}.load i{animation:none;width:100%}}
+</style>
+</head>
+<body>
+<div class="splash" id="splash" role="status" aria-label="Loading Sweet Ten">
+  <div class="strip t"></div><div class="strip b"></div>
+  <div class="candy" aria-hidden="true">🍬</div>
+  <h2>Howzit!</h2>
+  <p>Welcome to Sweet Ten. Lekker sweets, every one R10.</p>
+  <div class="load"><i></i></div>
+  <small>Tap anywhere to skip</small>
+</div>
+<div class="wrap">
+  <header class="top"><div class="brand">🍬 Sweet Ten</div><a class="btn alt" href="#shop">Shop</a></header>
+  <section class="hero">
+    <div>
+      <h1>Every sweet is ten rand.</h1>
+      <p>Pick a handful, no maths needed. Each candy costs R10, always.</p>
+      <a class="btn" href="#shop">Pick your sweets</a>
+    </div>
+    <div class="tag" aria-hidden="true"><b>R10</b><span>each, always</span></div>
+  </section>
+  <section id="shop">
+    <h2>The R10 shelf</h2>
+    <div class="grid" id="grid"></div>
+  </section>
+  <footer>Sweet Ten · Pay and collect at the counter</footer>
+</div>
+
+<div class="panel" id="panel" hidden>
+  <div class="in">
+    <h2>Your bag</h2>
+    <div id="items"></div>
+    <div class="total"><span>Total</span><span id="total">R0</span></div>
+    <button class="btn" id="checkout">Place order</button>
+    <div class="note" id="note" hidden></div>
+  </div>
+</div>
+<div class="bar"><div class="in">
+  <span id="summary">Your bag is empty</span>
+  <button id="toggle" aria-expanded="false" aria-controls="panel">View bag</button>
+</div></div>
+
+<script>
+(function(){
+  var s = document.getElementById("splash");
+  
+  function hide(){ s.classList.add("done"); setTimeout(function(){ s.remove(); }, 500); }
+  setTimeout(hide, 3500);
+  s.addEventListener("click", hide);
+})();
+
+var PRICE = 10;
+var PRODUCTS = [
+  {id:"toffee", name:"Toffee Chews", emoji:"🍬", desc:"Soft, buttery and slow to finish.", bg:"#ffd9a8"},
+  {id:"lolly", name:"Rainbow Lollipop", emoji:"🍭", desc:"A big swirl that lasts the walk home.", bg:"#ffc2dd"},
+  {id:"choc", name:"Milk Choc Squares", emoji:"🍫", desc:"Smooth milk chocolate, snap-style.", bg:"#e3c4a8"},
+  {id:"bears", name:"Gummy Bears", emoji:"🧸", desc:"Fruity, chewy and mixed colours.", bg:"#c9f27a"},
+  {id:"worms", name:"Sour Worms", emoji:"🪱", desc:"Sour sugar coat, sweet inside.", bg:"#b5ecd0"},
+  {id:"fizz", name:"Strawberry Fizz", emoji:"🍓", desc:"Berry jellies that tingle on the tongue.", bg:"#ffb3c1"},
+  {id:"lemon", name:"Lemon Drops", emoji:"🍋", desc:"Bright, tangy hard candy.", bg:"#fff08a"},
+  {id:"grape", name:"Grape Jellies", emoji:"🍇", desc:"Deep purple, juicy and chewy.", bg:"#d9c2ff"}
+];
+var cart = {};
+try { cart = JSON.parse(localStorage.getItem("sweetten-cart") || "{}") || {}; } catch (e) { cart = {}; }
+
+function save(){ try { localStorage.setItem("sweetten-cart", JSON.stringify(cart)); } catch (e) {} }
+function rand(n){ return "R" + n; }
+function find(id){ return PRODUCTS.filter(function(p){ return p.id === id; })[0]; }
+function count(){ var n = 0; for (var k in cart) n += cart[k]; return n; }
+
+function renderShop(){
+  document.getElementById("grid").innerHTML = PRODUCTS.map(function(p){
+    return '<article class="card"><div class="pic" style="background:' + p.bg + '" aria-hidden="true">' + p.emoji + '</div>' +
+      '<h3>' + p.name + '</h3><p>' + p.desc + '</p>' +
+      '<div class="row"><span class="price">' + rand(PRICE) + '</span>' +
+      '<button class="btn" data-add="' + p.id + '">Add to bag</button></div></article>';
+  }).join("");
+}
+
+function renderCart(){
+  var n = count(), ids = Object.keys(cart).filter(function(k){ return cart[k] > 0 && find(k); });
+  document.getElementById("summary").textContent = n ? n + (n === 1 ? " sweet" : " sweets") + " · " + rand(n * PRICE) : "Your bag is empty";
+  document.getElementById("total").textContent = rand(n * PRICE);
+  document.getElementById("items").innerHTML = ids.length ? ids.map(function(id){
+    var p = find(id);
+    return '<div class="item"><span>' + p.emoji + ' ' + p.name + '</span><span class="qty">' +
+      '<button data-dec="' + id + '" aria-label="Remove one ' + p.name + '">−</button><b>' + cart[id] + '</b>' +
+      '<button data-inc="' + id + '" aria-label="Add one ' + p.name + '">+</button></span>' +
+      '<span>' + rand(cart[id] * PRICE) + '</span></div>';
+  }).join("") : '<p>Nothing here yet. Add a few sweets from the shelf.</p>';
+  document.getElementById("checkout").disabled = !n;
+}
+
+function change(id, d){
+  cart[id] = Math.max(0, Math.min(99, (cart[id] || 0) + d));
+  if (!cart[id]) delete cart[id];
+  document.getElementById("note").hidden = true;
+  save(); renderCart();
+}
+
+document.addEventListener("click", function(e){
+  var t = e.target;
+  if (t.dataset.add) { change(t.dataset.add, 1); }
+  else if (t.dataset.inc) { change(t.dataset.inc, 1); }
+  else if (t.dataset.dec) { change(t.dataset.dec, -1); }
+});
+
+document.getElementById("toggle").addEventListener("click", function(){
+  var panel = document.getElementById("panel"), open = panel.hidden;
+  panel.hidden = !open;
+  this.setAttribute("aria-expanded", String(open));
+  this.textContent = open ? "Close bag" : "View bag";
+});
+
+document.getElementById("checkout").addEventListener("click", function(){
+  var n = count(); if (!n) return;
+  var lines = Object.keys(cart).map(function(k){ return cart[k] + " × " + find(k).name; }).join(", ");
+  var note = document.getElementById("note");
+  note.textContent = "Order ready: " + lines + ". Total " + rand(n * PRICE) + ". Show this at the counter to pay and collect.";
+  note.hidden = false;
+  cart = {}; save(); renderCart();
+});
+
+renderShop(); renderCart();
+</script>
+</body>
+</html>
